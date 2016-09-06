@@ -1,0 +1,195 @@
+  * {
+     margin: 0;
+     padding: 0;
+     border: 0;
+ }
+ html {
+     height: 100%;
+     width: 100%;
+     overflow: hidden;
+     font-size:10px;
+ }
+ h1,
+ h2,
+ h3,
+ h4,
+ h5,
+ h6 {
+     margin: 0;
+ }
+
+ .fade.ng-enter {
+     transition: 0.5s linear all;
+     opacity: 0;
+ }
+
+ .fade.ng-enter.ng-enter-active {
+     opacity: 1;
+ }
+
+
+ .box {
+     height: 100%;
+     width: 100%;
+ }
+
+ .loading_box {
+     position: absolute;
+     z-index: 1000;
+     top: 0;
+     left: 0;
+     bottom: 0;
+     right: 0;
+     height: 100%;
+     width: 100%;
+     display: none;
+     box-sizing: border-box;
+     background: #000;
+     color: #fff;
+ }
+
+ .div1 {
+     height: 100%;
+     width: 100%;
+     background: #f5f5f5;
+     overflow-y: auto;
+ }
+
+ .div2 {
+     height: 100%;
+     width: 100%;
+     background: #dfdfdf;
+     overflow: auto;
+ }
+
+
+
+ .view-page {
+     position: absolute;
+     top: 0;
+     left: 0;
+     bottom: 0;
+     right: 0;
+     z-index: 1;
+     height: 100%;
+     width: 100%;
+ }
+
+ .view-page.ng-enter {
+     animation: moveFromRight .5s both;
+ }
+
+ .view-page.ng-leave {
+     animation: moveToLeft .5s both;
+ }
+
+ @keyframes moveFromRight {
+     from {
+         transform: translateX(100%);
+     }
+ }
+
+ @keyframes moveToLeft {
+     to {
+         transform: translateX(-100%);
+     }
+ }
+
+ .loading_wrap {
+     width: 60px;
+     height: 60px;
+     position: absolute;
+     top: 0;
+     left: 0;
+     bottom: 0;
+     right: 0;
+     margin: auto;
+     -webkit-user-select: none;
+     margin: auto;
+ }
+
+ .sk-cube-grid {
+     width: 40px;
+     height: 40px;
+     margin: 0 auto;
+ }
+
+ .sk-cube-grid .sk-cube {
+     width: 33%;
+     height: 33%;
+     background-color: #fff;
+     float: left;
+     -webkit-animation: sk-cubeGridScaleDelay 1.3s infinite ease-in-out;
+     animation: sk-cubeGridScaleDelay 1.3s infinite ease-in-out;
+ }
+
+ .sk-cube-grid .sk-cube1 {
+     -webkit-animation-delay: 0.2s;
+     animation-delay: 0.2s;
+ }
+
+ .sk-cube-grid .sk-cube2 {
+     -webkit-animation-delay: 0.3s;
+     animation-delay: 0.3s;
+ }
+
+ .sk-cube-grid .sk-cube3 {
+     -webkit-animation-delay: 0.4s;
+     animation-delay: 0.4s;
+ }
+
+ .sk-cube-grid .sk-cube4 {
+     -webkit-animation-delay: 0.1s;
+     animation-delay: 0.1s;
+ }
+
+ .sk-cube-grid .sk-cube5 {
+     -webkit-animation-delay: 0.2s;
+     animation-delay: 0.2s;
+ }
+
+ .sk-cube-grid .sk-cube6 {
+     -webkit-animation-delay: 0.3s;
+     animation-delay: 0.3s;
+ }
+
+ .sk-cube-grid .sk-cube7 {
+     -webkit-animation-delay: 0s;
+     animation-delay: 0s;
+ }
+
+ .sk-cube-grid .sk-cube8 {
+     -webkit-animation-delay: 0.1s;
+     animation-delay: 0.1s;
+ }
+
+ .sk-cube-grid .sk-cube9 {
+     -webkit-animation-delay: 0.2s;
+     animation-delay: 0.2s;
+ }
+
+ @-webkit-keyframes sk-cubeGridScaleDelay {
+     0%,
+     70%,
+     100% {
+         -webkit-transform: scale3D(1, 1, 1);
+         transform: scale3D(1, 1, 1);
+     }
+     35% {
+         -webkit-transform: scale3D(0, 0, 1);
+         transform: scale3D(0, 0, 1);
+     }
+ }
+
+ @keyframes sk-cubeGridScaleDelay {
+     0%,
+     70%,
+     100% {
+         -webkit-transform: scale3D(1, 1, 1);
+         transform: scale3D(1, 1, 1);
+     }
+     35% {
+         -webkit-transform: scale3D(0, 0, 1);
+         transform: scale3D(0, 0, 1);
+     }
+ }

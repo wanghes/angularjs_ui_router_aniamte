@@ -1,0 +1,256 @@
+  * {
+      margin: 0;
+      padding: 0;
+      border: 0;
+  }
+
+  html {
+      height: 100%;
+      width: 100%;
+      overflow: hidden;
+      font-size: 10px;
+      font-family: "Microsoft YaHei ";
+  }
+
+  body {
+      background: #f5f5f5;
+      font-family: "Microsoft YaHei ";
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+      margin: 0;
+      word-wrap: break-word;
+  }
+
+  a {
+      text-decoration: none;
+  }
+
+  .intoFade.ng-enter {
+      transition: all 0.5s linear;
+      opacity: 0;
+  }
+
+  .intoFade.ng-enter.ng-enter-active {
+      opacity: 1;
+  }
+
+  .intoSlide.ng-enter {
+      animation: moveFromRight .3s both;
+      /* opacity: 0; */
+  }
+
+  .intoSlide.ng-enter.ng-enter-active {
+      /* opacity: 1; */
+  }
+
+  @keyframes moveFromRight {
+      from {
+          transform: translateX(100%);
+      }
+  }
+
+  @keyframes moveToLeft {
+      to {
+          transform: translateX(-100%);
+      }
+  }
+
+  .box {
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      height: 100%;
+      width: 100%;
+      overflow: hidden;
+  }
+
+  .main {
+      overflow: auto;
+      height: 100%;
+      width: 100%;
+      box-sizing: border-box;
+      padding-top: 50px;
+      padding-bottom: 40px;
+      background: #fff;
+  }
+
+  .loading_box {
+      position: absolute;
+      z-index: 1000;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      height: 100%;
+      width: 100%;
+      display: none;
+      box-sizing: border-box;
+      background: #0f96ba;
+      color: #fff;
+  }
+
+  .loading_wrap {
+      width: 60px;
+      height: 60px;
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      margin: auto;
+      -webkit-user-select: none;
+      margin: auto;
+  }
+
+  .spinner {
+      margin: 0 auto 0;
+      width: 70px;
+      text-align: center;
+  }
+
+  .header {
+      height: 50px;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      padding: 0 10px;
+      background: #fff;
+      box-shadow: 0 2px 3px #ddd;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+  }
+  .header .btn{
+    position: relative;
+    z-index: 2;
+  }
+  .header h3.title{
+    font-weight:normal;
+        width: 100%;
+    text-align: center;
+    position: absolute;
+    left: 0;
+    line-height: 50px;
+    height: 100%;
+    z-index: 1;
+    font-size:17px;
+  }
+
+  .footer {
+      height: 40px;
+      line-height: 40px;
+      display: flex;
+      justify-content: flex-start;
+      align-items: stretch;
+      align-content: stretch;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      padding: 0;
+      background: #000;
+      border-top: 1px solid #ddd;
+      box-shadow: 0 -2px 3px #ccc;
+  }
+
+  .footer a {
+      flex-grow: 4;
+      text-align: center;
+      color: #fff;
+      border-right: 1px solid #ccc;
+      text-decoration: none;
+      border-bottom:1px solid #ccc;
+      &:active{
+        background:#666;
+      }
+  }
+
+  .footer a i {
+      position: relative;
+      //top: 2px;
+  }
+
+  .footer a:last-child {
+      border-right: none;
+  }
+
+  .spinner > div {
+      width: 18px;
+      height: 18px;
+      background-color: #fff;
+      border-radius: 100%;
+      display: inline-block;
+      -webkit-animation: sk-bouncedelay 1.4s infinite ease-in-out both;
+      animation: sk-bouncedelay 1.4s infinite ease-in-out both;
+  }
+
+  .spinner .bounce1 {
+      -webkit-animation-delay: -0.32s;
+      animation-delay: -0.32s;
+  }
+
+  .spinner .bounce2 {
+      -webkit-animation-delay: -0.16s;
+      animation-delay: -0.16s;
+  }
+
+  @-webkit-keyframes sk-bouncedelay {
+      0%,
+      80%,
+      100% {
+          -webkit-transform: scale(0)
+      }
+      40% {
+          -webkit-transform: scale(1.0)
+      }
+  }
+
+  @keyframes sk-bouncedelay {
+      0%,
+      80%,
+      100% {
+          -webkit-transform: scale(0);
+          transform: scale(0);
+      }
+      40% {
+          -webkit-transform: scale(1.0);
+          transform: scale(1.0);
+      }
+  }
+
+  .item-container {
+      width: 100%;
+      box-sizing: border-box;
+      padding: 10px 0;
+      margin: 0;
+      list-style: none;
+  }
+
+  .item-container .item {
+      background-color: #f5f5f5;
+      padding: 8px;
+      margin: 0 0 10px;
+      border-radius: 3px;
+      color: #333;
+  }
+
+  .item-container.list .item {
+      float: left;
+      display: inline-block;
+      margin: 10px;
+      padding: 65px;
+  }
+
+  .item:hover {
+      cursor: pointer;
+      background-color: #fff;
+  }

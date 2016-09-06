@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html data-ng-app='myApp'>
+<head>
+    <title>ui-router</title>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="css/me-pageloading.css">
+    <script type="text/javascript" src="js/snap.svg-min.js"></script>
+    <script type="text/javascript" src="js/angular.min.js"></script>
+    <script type="text/javascript" src="js/angular-ui-router.js"></script>
+    <script type="text/javascript" src="js/me-pageloading.js"></script>
+</head>
+<style type="text/css">
+     *{
+            margin: 0;
+            padding: 0;
+        }
+        html, body{
+            background: #f5f5f5;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+        }
+</style>
+<body>
+    <div ui-view>
+    </div>
+    <div id='sert'></div>
+</body>
+
+</html>
+<script type="text/javascript">
+var myApp = angular.module('myApp', ['ui.router','me-pageloading']);
+myApp.config(['$stateProvider', '$urlRouterProvider','mePageLoadingProvider',function($stateProvider, $urlRouterProvider,mePageLoadingProvider) {
+    mePageLoadingProvider.effect='Circle';
+   // mePageLoadingProvider.container = document.getElementById('sert');
+    console.log(mePageLoadingProvider);
+    $urlRouterProvider.otherwise('/index');
+    $stateProvider
+        .state('index', {
+            url: "/index",
+            templateUrl: 'main.html',
+            controller: 'indexCtrl',
+            resolve:{
+                data:['$q',function($q){
+                     var defer = $q.defer();
+                        setTimeout(function(){
+                            defer.resolve({name:'wang_hes'});
+                        }, 1000);
+                        return defer.promise;
+                }]
+            }
+        })
+        .state('login', {
+            url: '/login',
+            template: '<form><h3>添加文章</h3></form>',
+            controller: 'loginCtrl',
+            resolve:{
+                data:['$q',function($q){
+                     var defer = $q.defer();
+                        setTimeout(function(){
+                            defer.resolve({name:'wang_hes'});
+                        }, 500);
+                        return defer.promise;
+                }]
+            }
+        })
+}]);
+myApp.controller('indexCtrl', ['$scope','data', function($scope,data) {
+
+    $scope.name = data.name;
+}]);
+myApp.controller('loginCtrl', ['$scope', function($scope) {
+
+}]);
+</script>

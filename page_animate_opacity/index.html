@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html data-ng-app="myapp">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <script src="js/jquery.min.js"></script>
+    <script src="js/angular.min.js"></script>
+    <script src="js/angular-animate.min.js"></script>
+    <script src="js/angular-ui-router.js"></script>
+</head>
+
+<body ng-controller="MyController">
+    <div class="fade box" ui-view></div>
+    <div class="loading_box">
+        <div class='loading_wrap'>
+            <div class="spinner">
+                <div class="bounce1"></div>
+                <div class="bounce2"></div>
+                <div class="bounce3"></div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
+<script type="text/javascript">
+var app = angular.module('myapp', ['ui.router', 'ngAnimate']);
+app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
+    $urlRouterProvider.when('', '/main1').otherwise('/main1');
+    $stateProvider
+        .state('main1', {
+            url: '/main1',
+            resolve: {
+                data: ['$q', function($q) {
+                    var defer = $q.defer();
+                    setTimeout(function() {
+                        defer.resolve({
+                            name: 'wang_hes'
+                        });
+                    }, 1500);
+                    return defer.promise;
+                }]
+            },
+            templateUrl: '1.html'
+        })
+        .state('main2', {
+            url: '/main2',
+            resolve: {
+                data: ['$q','$timeout', function($q,$timeout) {
+                    var defer = $q.defer();
+                    var dataJson = [{
+                        time: '2016-09-09',
+                        title: '这是一个文章的标题'
+                    }, {
+                        time: '2016-09-12',
+                        title: '篇D3源码解构文章后的对D3的研究笔记'
+                    }, {
+                        time: '2016-09-13',
+                        title: '函数是用在取出数组的一段切片'
+                    }, {
+                        time: '2016-09-14',
+                        title: '发所以最近我在看它的实现'
+                    }, {
+                        time: '2016-09-19',
+                        title: '用新的切片替换原删除切片位置的功'
+                    }, {
+                        time: '2016-09-29',
+                        title: '本文不贴大段代码。源码地址'
+                    }, {
+                        time: '2016-10-12',
+                        title: '关于这三个模块的分析网上随随便便就能'
+                    }, {
+                        time: '2016-10-19',
+                        title: 'empty和isset函数时怎么判断变量的'
+                    }, {
+                        time: '2016-10-21',
+                        title: '去除字符串中首尾的空格或其他字符'
+                    }, {
+                        time: '2016-10-24',
+                        title: '在PHP中经常会用到这两个函'
+                    }, {
+                        time: '2016-11-09',
+                        title: '对PHP源码更详细的注解'
+                    }, {
+                        time: '2016-12-09',
+                        title: '前段时间阅读了一篇关于Android动画'
+                    }];
+                    $timeout(function() {
+                        defer.resolve(dataJson);
+                    }, 1000);
+
+                    return defer.promise;
+                }]
+            },
+            controller: ['$scope', '$timeout', 'data', function($scope, $timeout, data) {
+                $scope.list = [];
+                for (var i = 0; i < data.length; i++) {
+                    (function(num) {
+                        $timeout(function() {
+                            $scope.list.push(data[num]);
+                        }, 100 * num);
+                    }(i));
+                };
+            }],
+            templateUrl: '2.html'
+        });
+}]).run(['$rootScope', function($rootScope) {
+    function changeStart() {
+        $('.loading_box').show();
+    }
+
+    function changeSuccess() {
+        $('.loading_box').hide();
+    }
+    $rootScope.$on('$stateChangeStart', changeStart);
+    $rootScope.$on('$stateChangeSuccess', changeSuccess);
+    $rootScope.$on('$stateChangeError', changeSuccess);
+    $rootScope.$on('$stateNotFound', changeSuccess);
+
+    $rootScope.$on('$routeChangeStart', changeStart);
+    $rootScope.$on('$routeChangeSuccess', changeSuccess);
+    $rootScope.$on('$routeChangeError', changeSuccess);
+}]);
+
+app.controller('MyController', function($state) {
+    $state.go('main1');
+});
+
+app.animation('.fade', function() {
+    return {
+        enter: function(element, done) {
+            element.css({
+                // animation: "moveFromRight .5s both",
+                display: 'block',
+                //opacity: 1
+            });
+            element.animate({
+                opacity: 1
+            }, 500);
+        },
+        leave: function(element, done) {
+            element.css({
+                //animation: "moveToLeft .5s both",
+                display: 'none',
+                //opacity: 0
+            });
+            element.animate({
+                opacity: 0
+            }, 500);
+        }
+    };
+});
+</script>

@@ -1,0 +1,16 @@
+<div class="main">
+    <header class='header'>
+        <h3 class="title">首页</h3>
+    </header>
+    <div class="container-fluid">
+        <ul class="item-container">
+            <li class="item" ng-class="animation" ng-repeat="item in list"><span>{{item.time}}</span>{{item.title}}</li>
+        </ul>
+    </div>
+    <footer class="footer">
+        <a ui-sref="main1"><i class="icon-home icon-white"></i>&nbsp;首页</a>
+        <a ui-sref="main2"><i class="icon-th-list icon-white"></i>&nbsp;新闻</a>
+        <a ui-sref="main3"><i class="icon-heart icon-white"></i>&nbsp;产品</a>
+        <a ui-sref="main4"><i class="icon-headphones icon-white"></i>&nbsp;联系我们</a>
+    </footer>
+</div>

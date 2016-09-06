@@ -1,0 +1,39 @@
+<div class="box">
+<div class="div2">
+<div class="container-fluid">
+  <ul class="item-container">
+    <li class="item" ng-class="animation" ng-repeat="item in list"><span>{{item.time}}</span>{{item.title}}</li>
+  </ul>
+  <a class='btn btn-primary' ui-sref="main1">click1</a>
+</div>
+
+</div>
+</div>
+
+<style type="text/css">
+.item-container {
+  width: 100%;
+  box-sizing: border-box;
+  padding:10px 0;
+  margin:0;
+  list-style: none;
+}
+.item-container .item {
+  background-color: #f5f5f5;
+  padding:8px;
+  margin: 0 0 10px;
+  border-radius: 3px;
+  color: #333;
+}
+.item-container.list .item {
+  float: left;
+  display: inline-block;
+  margin: 10px;
+  padding: 65px;
+}
+
+.item:hover {
+  cursor: pointer;
+  background-color: #fff;
+}
+</style>
